@@ -7,20 +7,16 @@ int main() {
     try {
         string input1, input2;
         string operation;
-
-        // Input data
         cout << "Enter the first hexadecimal number: ";
         cin >> input1;
         cout << "Enter the second hexadecimal number: ";
         cin >> input2;
         cout << "Choose an operation (+, -, ==, !=, <, >): ";
         cin >> operation;
-
-        // Initialize Hex objects
+        
         Hex num1(input1);
         Hex num2(input2);
 
-        // Perform the selected operation
         if (operation == "+") {
             num1.add(num2);
             cout << "Result of addition: " << num1.toString() << endl;

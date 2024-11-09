@@ -1,0 +1,153 @@
+PS C:\Users\klosh\Desktop\test\project_directory\build> .\Tests.exe
+Running main() from C:\Users\klosh\Desktop\test\project_directory\build\_deps\googletest-src\googletest\src\gtest_main.cc
+[==========] Running 4 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 4 tests from RhombusTest
+[ RUN      ] RhombusTest.AreaTest
+[       OK ] RhombusTest.AreaTest (0 ms)
+[ RUN      ] RhombusTest.CenterTest
+[       OK ] RhombusTest.CenterTest (0 ms)
+[ RUN      ] RhombusTest.EqualityTest
+[       OK ] RhombusTest.EqualityTest (0 ms)
+[ RUN      ] RhombusTest.AssignmentTest
+[       OK ] RhombusTest.AssignmentTest (0 ms)
+[----------] 4 tests from RhombusTest (111 ms total)
+
+[----------] Global test environment tear-down
+[==========] 4 tests from 1 test suite ran. (185 ms total)
+[  PASSED  ] 4 tests.
+PS C:\Users\klosh\Desktop\test\project_directory\build> .\FiguresProject.exe
+Menu:
+1. Add a figure
+2. Remove a figure
+3. Display all figures
+4. Calculate total area
+0. Exit
+Select an action: 3
+Menu:
+1. Add a figure
+2. Remove a figure
+3. Display all figures
+4. Calculate total area
+0. Exit
+Select an action: 1
+Select the type of figure:
+1. Rhombus
+2. Pentagon
+3. Hexagon
+1
+Pls input coordinates of the vertices:
+0 0
+1 1
+2 0
+1 -1
+Menu:
+1. Add a figure
+2. Remove a figure
+3. Display all figures
+4. Calculate total area
+0. Exit
+Select an action: 1
+Select the type of figure:
+1. Rhombus
+2. Pentagon
+3. Hexagon
+2
+Pls input coordinates of the vertices:
+0 0
+4 0
+5 2
+2 5
+0 3
+Menu:
+1. Add a figure
+2. Remove a figure
+3. Display all figures
+4. Calculate total area
+0. Exit
+Select an action: 3
+0. Rhombus with vertices: (0, 0) (1, 1) (2, 0) (1, -1)
+Center: (1, 0)
+Area: 2
+1. Pentagon with vertices: (0, 0) (4, 0) (5, 2) (2, 5) (0, 3) 
+Center: (2.2, 2)
+Area: 17.5
+Menu:
+1. Add a figure
+2. Remove a figure
+3. Display all figures
+4. Calculate total area
+0. Exit
+Select an action: 4
+Total area of all figures: 19.5
+Menu:
+1. Add a figure
+2. Remove a figure
+3. Display all figures
+4. Calculate total area
+0. Exit
+Select an action: 1
+Select the type of figure:
+1. Rhombus
+2. Pentagon
+3. Hexagon
+2
+Pls input coordinates of the vertices:
+0 0
+2 0
+3 2
+1 4
+-1 2
+Menu:
+1. Add a figure
+2. Remove a figure
+3. Display all figures
+4. Calculate total area
+0. Exit
+Select an action: 3
+0. Rhombus with vertices: (0, 0) (1, 1) (2, 0) (1, -1) 
+Center: (1, 0)
+Area: 2
+1. Pentagon with vertices: (0, 0) (4, 0) (5, 2) (2, 5) (0, 3) 
+Center: (2.2, 2)
+Area: 17.5
+2. Pentagon with vertices: (0, 0) (2, 0) (3, 2) (1, 4) (-1, 2) 
+Center: (1, 1.6)
+Area: 10
+Menu:
+1. Add a figure
+2. Remove a figure
+3. Display all figures
+4. Calculate total area
+0. Exit
+Select an action: 4
+Total area of all figures: 29.5
+Menu:
+1. Add a figure
+2. Remove a figure
+3. Display all figures
+4. Calculate total area
+0. Exit
+Select an action: 2
+Enter the index of the figure to remove: 1
+Menu:
+1. Add a figure
+2. Remove a figure
+3. Display all figures
+4. Calculate total area
+0. Exit
+Select an action: 3
+0. Rhombus with vertices: (0, 0) (1, 1) (2, 0) (1, -1)
+Center: (1, 0)
+Area: 2
+1. Pentagon with vertices: (0, 0) (2, 0) (3, 2) (1, 4) (-1, 2) 
+Center: (1, 1.6)
+Area: 10
+Menu:
+1. Add a figure
+2. Remove a figure
+3. Display all figures
+4. Calculate total area
+0. Exit
+Select an action: 4
+Total area of all figures: 12

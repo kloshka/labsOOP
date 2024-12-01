@@ -49,18 +49,18 @@ void Pentagon<T>::CalculateCenter() {
 
 template<Scalar T>
 void Pentagon<T>::Print(std::ostream& os) const {
-    os << "Координаты вершин пятиугольника:\n";
+    os << "Coordinates of the pentagon vertices:\n";
     for (const auto& vertex : vertices_) {
         os << "(" << vertex->getX() << ", " << vertex->getY() << ")\n";
     }
-    os << "Центр: (" << center_.getX() << ", " << center_.getY() << ")\n";
+    os << "Center: (" << center_.getX() << ", " << center_.getY() << ")\n";
 }
 
 template<Scalar T>
 void Pentagon<T>::Read(std::istream& is) {
-    std::cout << "Введите координаты 5-ти вершин x y\n";
+    std::cout << "Enter the coordinates of the 5 vertices x y\n";
     for (size_t i {0}; i < NUM_VERTICES; ++i) {
-        std::cout << "Координаты точки " << i + 1 << " : ";
+        std::cout << "Coordinates of point " << i + 1 << " : ";
         T x, y;
         is >> x >> y;
         vertices_[i] = std::make_unique<Point<T>>(x, y);
@@ -96,7 +96,7 @@ Pentagon<T>& Pentagon<T>::operator=(const Figure<T>& Other) {
             const Pentagon<T>& otherPentagon = dynamic_cast<const Pentagon<T>&>(Other);
             *this = otherPentagon;
         } catch (const std::bad_cast&) {
-            // Объект не является Pentagon
+            // The object is not a Pentagon
             throw std::invalid_argument("Assigned object is not a Pentagon");
         }
     }
@@ -106,7 +106,7 @@ Pentagon<T>& Pentagon<T>::operator=(const Figure<T>& Other) {
 template<Scalar T>
 Pentagon<T>& Pentagon<T>::operator=(const Pentagon<T>& Other) {
     if (this != &Other) {
-        // Копируем данные
+        // Copy the data
         for (size_t i = 0; i < NUM_VERTICES; ++i) {
             vertices_[i] = std::make_unique<Point<T>>(*Other.vertices_[i]);
         }
@@ -116,13 +116,13 @@ Pentagon<T>& Pentagon<T>::operator=(const Pentagon<T>& Other) {
 }
 
 template<Scalar T>
-Pentagon<T>& Pentagon<T>::operator=(Figure<T>&& Other) noexcept{
+Pentagon<T>& Pentagon<T>::operator=(Figure<T>&& Other) noexcept {
     if (this != &Other) {
         try {
             Pentagon<T>& otherPentagon = dynamic_cast<Pentagon<T>&>(Other);
             *this = std::move(otherPentagon);
         } catch (const std::bad_cast&) {
-            // Объект не является Pentagon
+            // The object is not a Pentagon
             throw std::invalid_argument("Assigned object is not a Pentagon");
         }
     }
@@ -149,7 +149,7 @@ bool Pentagon<T>::operator==(const Figure<T>& Other) const {
                 }
             }
         } catch (const std::bad_cast&) {
-            // Объект не является Pentagon
+            // The object is not a Pentagon
             return false;
         }
     }

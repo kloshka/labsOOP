@@ -1,3 +1,6 @@
+#ifndef HEXAGON_TPP
+#define HEXAGON_TPP
+
 #include "Hexagon.h"
 
 template<Scalar T>
@@ -20,13 +23,11 @@ Hexagon<T>::Hexagon(const Hexagon& Other) {
 }
 
 template<Scalar T>
-Hexagon<T>::Hexagon(Hexagon&& Other) noexcept {
-    vertices_ = std::move(Other.vertices_);
-    center_ = std::move(Other.center_);
-}
+Hexagon<T>::Hexagon(Hexagon&& Other) noexcept
+    : vertices_(std::move(Other.vertices_)), center_(std::move(Other.center_)) {}
 
 template<Scalar T>
-Hexagon<T>::~Hexagon() {}
+Hexagon<T>::~Hexagon() = default;
 
 template<Scalar T>
 void Hexagon<T>::CalculateCenter() {
@@ -49,18 +50,18 @@ void Hexagon<T>::CalculateCenter() {
 
 template<Scalar T>
 void Hexagon<T>::Print(std::ostream& os) const {
-    os << "Координаты вершин шестиугольника:\n";
+    os << "Coordinates of the hexagon vertices:\n";
     for (const auto& vertex : vertices_) {
         os << "(" << vertex->getX() << ", " << vertex->getY() << ")\n";
     }
-    os << "Центр: (" << center_.getX() << ", " << center_.getY() << ")\n";
+    os << "Center: (" << center_.getX() << ", " << center_.getY() << ")\n";
 }
 
 template<Scalar T>
 void Hexagon<T>::Read(std::istream& is) {
-    std::cout << "Введите координаты 6-ти вершин x y\n";
+    std::cout << "Enter the coordinates of the 6 vertices x y\n";
     for (size_t i {0}; i < NUM_VERTICES; ++i) {
-        std::cout << "Координаты точки " << i + 1 << " : ";
+        std::cout << "Coordinates of point " << i + 1 << " : ";
         T x, y;
         is >> x >> y;
         vertices_[i] = std::make_unique<Point<T>>(x, y);
@@ -96,7 +97,6 @@ Hexagon<T>& Hexagon<T>::operator=(const Figure<T>& Other) {
             const Hexagon<T>& otherHexagon = dynamic_cast<const Hexagon<T>&>(Other);
             *this = otherHexagon;
         } catch (const std::bad_cast&) {
-            // Объект не является Hexagon
             throw std::invalid_argument("Assigned object is not a Hexagon");
         }
     }
@@ -106,7 +106,6 @@ Hexagon<T>& Hexagon<T>::operator=(const Figure<T>& Other) {
 template<Scalar T>
 Hexagon<T>& Hexagon<T>::operator=(const Hexagon<T>& Other) {
     if (this != &Other) {
-        // Копируем данные
         for (size_t i = 0; i < NUM_VERTICES; ++i) {
             vertices_[i] = std::make_unique<Point<T>>(*Other.vertices_[i]);
         }
@@ -116,13 +115,12 @@ Hexagon<T>& Hexagon<T>::operator=(const Hexagon<T>& Other) {
 }
 
 template<Scalar T>
-Hexagon<T>& Hexagon<T>::operator=(Figure<T>&& Other) noexcept{
+Hexagon<T>& Hexagon<T>::operator=(Figure<T>&& Other) noexcept {
     if (this != &Other) {
         try {
             Hexagon<T>& otherHexagon = dynamic_cast<Hexagon<T>&>(Other);
             *this = std::move(otherHexagon);
         } catch (const std::bad_cast&) {
-            // Объект не является Hexagon
             throw std::invalid_argument("Assigned object is not a Hexagon");
         }
     }
@@ -149,9 +147,10 @@ bool Hexagon<T>::operator==(const Figure<T>& Other) const {
                 }
             }
         } catch (const std::bad_cast&) {
-            // Объект не является Hexagon
             return false;
         }
     }
     return true;
 }
+
+#endif // HEXAGON_TPP

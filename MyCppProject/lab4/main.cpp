@@ -12,22 +12,22 @@ int main() {
 
     char choice;
     do {
-        std::cout << "Меню:\n";
-        std::cout << "1. Добавить фигуру в массив\n";
-        std::cout << "2. Вывод фигур (координаты, геометрический центр, площадь)\n";
-        std::cout << "3. Удалить фигуру по индексу\n";
-        std::cout << "4. Выход\n";
-        std::cout << "Выбор: ";
+        std::cout << "Menu:\n";
+        std::cout << "1. Add a figure to the array\n";
+        std::cout << "2. Display figures (coordinates, geometric center, area)\n";
+        std::cout << "3. Remove a figure by index\n";
+        std::cout << "4. Exit\n";
+        std::cout << "Choice: ";
 
         std::cin >> choice;
 
         switch(choice) {
             case '1': {
-                std::cout << "Выберите тип фигуры:\n";
-                std::cout << "1. Ромб\n";
-                std::cout << "2. 5-тиугольник\n";
-                std::cout << "3. 6-тиугольник\n";
-                std::cout << "Выбор: ";
+                std::cout << "Select the type of figure:\n";
+                std::cout << "1. Rhombus\n";
+                std::cout << "2. Pentagon\n";
+                std::cout << "3. Hexagon\n";
+                std::cout << "Choice: ";
 
                 char figChoice;
                 std::cin >> figChoice;
@@ -45,51 +45,51 @@ int main() {
                         figure = std::make_shared<Hexagon<int>>();
                         break;
                     default:
-                        std::cout << "Некорректный ввод\n";
+                        std::cout << "Invalid input\n";
                         continue;
                 }
 
-                std::cout << "Введите координаты вершин:\n";
+                std::cout << "Enter the coordinates of the vertices:\n";
                 figure->Read(std::cin);
                 figures.PushBack(figure);
-                std::cout << "Фигура добавлена.\n";
+                std::cout << "Figure added.\n";
                 std::cout << "-----------------------\n";
                 break;
             }
             case '2': {
                 double totalArea = 0.0;
                 for (size_t i = 0; i < figures.Size(); ++i) {
-                    std::cout << "Фигура " << i + 1 << ":\n";
+                    std::cout << "Figure " << i + 1 << ":\n";
                     figures[i]->Print(std::cout);
                     double area = figures[i]->Area();
-                    std::cout << "Площадь: " << area << '\n';
+                    std::cout << "Area: " << area << '\n';
                     totalArea += area;
                 }
-                std::cout << "Общая площадь: " << totalArea << '\n';
+                std::cout << "Total area: " << totalArea << '\n';
                 std::cout << "-----------------------\n";
                 break;
             }
             case '3': {
-                std::cout << "Введите индекс (от 1 до " << figures.Size() << "): ";
+                std::cout << "Enter the index (from 1 to " << figures.Size() << "): ";
                 size_t index;
                 std::cin >> index;
                 if (index < 1 || index > figures.Size()) {
-                    std::cout << "Некорректный ввод\n";
+                    std::cout << "Invalid input\n";
                 } else {
                     figures.RemoveAt(index - 1);
-                    std::cout << "Фигура удалена.\n";
+                    std::cout << "Figure removed.\n";
                 }
                 std::cout << "-----------------------\n";
                 break;
             }
             case '4':
-                std::cout << "Выход...\n";
+                std::cout << "Exiting...\n";
                 break;
             default:
-                std::cout << "Некорректный ввод\n";
+                std::cout << "Invalid input\n";
                 std::cout << "-----------------------\n";
         }
     } while (choice != '4');
 
-    return 0;    
+    return 0;
 }

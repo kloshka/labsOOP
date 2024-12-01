@@ -23,18 +23,23 @@ set(INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
 set(TEST_DIR ${CMAKE_SOURCE_DIR}/test)
 
 # --- Компиляция основной программы ---
-add_executable(lab5 ${SRC_DIR}/lab5.cpp ${CMAKE_SOURCE_DIR}/main.cpp)
+add_executable(lab5
+    ${SRC_DIR}/lab5.cpp
+)
 target_include_directories(lab5 PRIVATE ${INCLUDE_DIR})
 
 # --- Компиляция тестов ---
 enable_testing()
 
 # Создание исполняемого файла для тестов
-add_executable(tests_lab5 ${TEST_DIR}/test.cpp ${SRC_DIR}/lab5.cpp)
+add_executable(runTests
+    ${TEST_DIR}/test.cpp
+    ${SRC_DIR}/lab5.cpp
+)
 
 # Подключение библиотек Google Test к тестовому файлу
-target_link_libraries(tests_lab5 PRIVATE gtest_main)
-target_include_directories(tests_lab5 PRIVATE ${INCLUDE_DIR} ${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR}/googletest/include)
+target_link_libraries(runTests PRIVATE gtest_main)
+target_include_directories(runTests PRIVATE ${INCLUDE_DIR} ${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR}/googletest/include)
 
 # Добавление тестов в CTest
-add_test(NAME Lab5Tests COMMAND tests_lab5)
+add_test(NAME Lab5Tests COMMAND runTests)

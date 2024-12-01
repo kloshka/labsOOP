@@ -49,18 +49,18 @@ void Rhombus<T>::CalculateCenter() {
 
 template<Scalar T>
 void Rhombus<T>::Print(std::ostream& os) const {
-    os << "Координаты вершин ромба:\n";
+    os << "Coordinates of the rhombus vertices:\n";
     for (const auto& vertex : vertices_) {
         os << "(" << vertex->getX() << ", " << vertex->getY() << ")\n";
     }
-    os << "Центр: (" << center_.getX() << ", " << center_.getY() << ")\n";
+    os << "Center: (" << center_.getX() << ", " << center_.getY() << ")\n";
 }
 
 template<Scalar T>
 void Rhombus<T>::Read(std::istream& is) {
-    std::cout << "Введите координаты 4-ех вершин x y\n";
+    std::cout << "Enter the coordinates of the 4 vertices x y\n";
     for (size_t i {0}; i < NUM_VERTICES; ++i) {
-        std::cout << "Координаты точки " << i + 1 << " : ";
+        std::cout << "Coordinates of point " << i + 1 << " : ";
         T x, y;
         is >> x >> y;
         vertices_[i] = std::make_unique<Point<T>>(x, y);
@@ -96,7 +96,7 @@ Rhombus<T>& Rhombus<T>::operator=(const Figure<T>& Other) {
             const Rhombus<T>& otherRhombus = dynamic_cast<const Rhombus<T>&>(Other);
             *this = otherRhombus;
         } catch (const std::bad_cast&) {
-            // Объект не является Rhombus
+            // The object is not a Rhombus
             throw std::invalid_argument("Assigned object is not a Rhombus");
         }
     }
@@ -106,7 +106,7 @@ Rhombus<T>& Rhombus<T>::operator=(const Figure<T>& Other) {
 template<Scalar T>
 Rhombus<T>& Rhombus<T>::operator=(const Rhombus<T>& Other) {
     if (this != &Other) {
-        // Копируем данные
+        // Copy the data
         for (size_t i = 0; i < NUM_VERTICES; ++i) {
             vertices_[i] = std::make_unique<Point<T>>(*Other.vertices_[i]);
         }
@@ -116,13 +116,13 @@ Rhombus<T>& Rhombus<T>::operator=(const Rhombus<T>& Other) {
 }
 
 template<Scalar T>
-Rhombus<T>& Rhombus<T>::operator=(Figure<T>&& Other) noexcept{
+Rhombus<T>& Rhombus<T>::operator=(Figure<T>&& Other) noexcept {
     if (this != &Other) {
         try {
             Rhombus<T>& otherRhombus = dynamic_cast<Rhombus<T>&>(Other);
             *this = std::move(otherRhombus);
         } catch (const std::bad_cast&) {
-            // Объект не является Rhombus
+            // The object is not a Rhombus
             throw std::invalid_argument("Assigned object is not a Rhombus");
         }
     }
@@ -149,7 +149,7 @@ bool Rhombus<T>::operator==(const Figure<T>& Other) const {
                 }
             }
         } catch (const std::bad_cast&) {
-            // Объект не является Rhombus
+            // The object is not a Rhombus
             return false;
         }
     }
